@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import RefreshImage from "../../../assets/refresh.svg";
+import useAppStore from "../../../store/store";
 
 const SRefreshButton = styled.div`
   height: 70px;
@@ -17,8 +18,9 @@ const SRefreshButton = styled.div`
   }
 `;
 const RefreshButton = () => {
+  const { resetState } = useAppStore();
   return (
-    <SRefreshButton className="btn">
+    <SRefreshButton className="btn" onClick={resetState}>
       <img className="refresh-icon" src={RefreshImage} />
     </SRefreshButton>
   );

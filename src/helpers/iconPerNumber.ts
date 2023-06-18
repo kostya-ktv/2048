@@ -11,7 +11,7 @@ import icon1024 from '../assets/tiles/1024.gif'
 import { TileNumbersType } from '../types'
 
 
-export const IconPerNumber = (tileNumber: TileNumbersType): string => {
+export const IconPerNumber = (tileNumber: TileNumbersType): string | undefined => {
     switch (tileNumber) {
         case 2:
             return icon2
@@ -45,6 +45,6 @@ export const IconPerNumber = (tileNumber: TileNumbersType): string => {
             break;
     
         default:
-            return '';
+            return undefined;
     }
 }

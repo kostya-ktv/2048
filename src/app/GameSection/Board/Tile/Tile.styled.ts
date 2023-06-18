@@ -1,6 +1,9 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
-const STile = styled.div`
+interface Props { $isNewTile: boolean }
+
+const STile = styled.div<Props>`
+    ${({$isNewTile}) => css`
     position: relative;
     display: flex;
     border-radius: 15px;
@@ -12,9 +15,30 @@ const STile = styled.div`
     overflow: hidden;
     user-select: none;
     pointer-events: none;
+    width: 100%;
+  
+    
     .tile-image {
-        height: 90%;
+        height: 100%;
+        width: 100%;
         border-radius: 15px;
+          ${$isNewTile && css`
+        animation-duration: 0.2s;
+        animation-name: newTile;
+        animation-fill-mode: forwards;
+        animation-delay: 0.25s;
+        transform: scale(0);
+        @keyframes newTile {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    `}
     }
+`}
+  
 `
 export default STile

@@ -10,7 +10,8 @@ const SBoard = styled.div`
     border-radius: 15px;
     max-height: 500px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
     gap: 10px;
     padding: 5px;
 `

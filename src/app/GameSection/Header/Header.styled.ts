@@ -6,7 +6,7 @@ const SHeader = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
      background-color: rgb(0 0 0 / 15%);
        border-radius: 15px;
     .game-name {
@@ -18,16 +18,7 @@ const SHeader = styled.div`
         padding: 12px 31px;
       
     }
-    .score {
-        height: 70px;
-        width: 60px;
-        padding: 5px 10px;
-        border-radius: 0 15px 15px 0;
-        color: white;
-        span {
-            font-family: 'Courier New', Courier, monospace;
-        }
-    }
+   
     
 `
 export default memo(SHeader)

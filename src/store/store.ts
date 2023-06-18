@@ -1,24 +1,39 @@
 import { create } from "zustand";
 import { devtools, persist } from 'zustand/middleware'
+import { createEmptyBoard } from "../services/board.service";
 
+export const APP_STORE_KEY = 'app-storage'
+
+export type BoardType = [number][]
 interface IAppStore {
-    board: Array<[number]>,
-    isGameStarted: boolean, 
+    board: BoardType,
     isFinished: boolean, 
-    setStartedGame: (isStarted: boolean) => void
+    isYouLose: boolean,
+
+    setYouLose: (isYouLose: boolean) => void,
+    setBoard: (newBoard: BoardType) => void,
+    resetState: () => void  
 }
+
+const defaultState = () => ({
+  board: createEmptyBoard(),
+
+  isFinished: false,
+  isYouLose: false,
+})
 
 const useAppStore = create<IAppStore>()(
   devtools(
     persist(
         (set) => ({
-         board: [],
-            isGameStarted: false,
-            isFinished: false,
-            setStartedGame: (isStarted: boolean) => set((state) => ({ isGameStarted: isStarted }))
+        ...defaultState(),
+
+        setYouLose: (isYouLose: boolean) => set(() => ({ isYouLose })),
+        setBoard: (newBoard) => set(() => ({ board: newBoard })),
+        resetState: () => set((state) => ({...defaultState()}))
       }),
       {
-        name: 'bear-storage',
+        name: APP_STORE_KEY,
       }
     )
   )
