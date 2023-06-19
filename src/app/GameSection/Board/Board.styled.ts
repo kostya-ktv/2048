@@ -13,5 +13,17 @@ const SBoard = styled.div`
     grid-auto-rows: 1fr;
     gap: 10px;
     padding: 5px;
+    .lose-screen {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        font-size: 50px;
+        letter-spacing: 4px;
+        text-align: center;
+        color: white;
+    }
 `
 export default SBoard

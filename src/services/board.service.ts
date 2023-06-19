@@ -159,3 +159,43 @@ export const mirrorArrayVertically= (board: BoardType): BoardType => {
   const mirroredArray = [...board].reverse();
   return mirroredArray;
 }
+
+export const checkMoves = (board: BoardType): boolean => {
+    const isHasEmptyTiles = board.some(row => {
+        const tiles = row.filter(el => el.value === 0)
+        if (tiles.length) return true
+        return false
+    })
+    if(isHasEmptyTiles) return true
+
+    const { isHasPairSiblings } = checkingPairSiblings(board)
+    if (!isHasEmptyTiles && !isHasPairSiblings) return false
+    else return true
+}
+
+const checkingPairSiblings = (board: BoardType) => {
+    let isHasPairSiblings = false
+    isHasPairSiblings = board.some((row, rowIndex) => {
+        return row.some((currentTile, tileIndex) => {
+            let isHasSibling = false
+            //up
+            try {
+                if(board[rowIndex - 1][tileIndex].value === currentTile.value) isHasSibling = true
+            } catch (error) {}
+            //down
+            try {
+                if(board[rowIndex + 1][tileIndex].value === currentTile.value) isHasSibling = true
+            } catch (error) {}
+            //left
+            try {
+                if(board[rowIndex][tileIndex - 1].value === currentTile.value) isHasSibling = true
+            } catch (error) {}
+            //right
+            try {
+                if(board[rowIndex][tileIndex + 1].value === currentTile.value) isHasSibling = true
+            } catch (error) { }
+            return isHasSibling
+        })
+    })
+    return {isHasPairSiblings}
+}
