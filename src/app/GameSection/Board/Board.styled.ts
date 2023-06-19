@@ -13,7 +13,7 @@ const SBoard = styled.div`
     grid-auto-rows: 1fr;
     gap: 10px;
     padding: 5px;
-    .lose-screen {
+    .res-screen {
         display: flex;
         position: absolute;
         left: 50%;

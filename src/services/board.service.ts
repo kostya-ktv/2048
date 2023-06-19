@@ -172,7 +172,11 @@ export const checkMoves = (board: BoardType): boolean => {
     if (!isHasEmptyTiles && !isHasPairSiblings) return false
     else return true
 }
-
+export const check2048 = (board: BoardType): boolean => { 
+    return board.some((row) => {
+        return row.some(tile => tile.value === 2048)
+    })
+}
 const checkingPairSiblings = (board: BoardType) => {
     let isHasPairSiblings = false
     isHasPairSiblings = board.some((row, rowIndex) => {

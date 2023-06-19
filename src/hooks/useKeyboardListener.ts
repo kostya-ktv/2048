@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import useAppStore from "../store/store"
 import useGenerateNextMove from "./useGenerateNextMove"
-import { moveRight, moveLeft , moveUp, moveDown, checkMoves} from "../services/board.service"
+import { moveRight, moveLeft , moveUp, moveDown, checkMoves, check2048} from "../services/board.service"
 
 const useKeyboardListener = () => {
-    const { isFinished, board,setYouLose, setBoard } = useAppStore()
+    const { isFinished, setIsYouWon ,board,setYouLose, setBoard } = useAppStore()
     const { generateNextMove } = useGenerateNextMove()
 
     useEffect(() => {
@@ -31,6 +31,9 @@ const useKeyboardListener = () => {
                             break;
                     }
                     setBoard(resBoard)
+                    if (check2048(resBoard)) {
+                        setIsYouWon(true)
+                    }
                     if (!checkMoves(resBoard)) {
                         setYouLose(true)
                     } else {

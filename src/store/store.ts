@@ -10,6 +10,7 @@ export type BoardType = [TileEntity][]
 type IAppStoreReducers = {
     setYouLose: (isYouLose: boolean) => void,
     setIsLoading: (isLoading: boolean) => void,
+    setIsYouWon: (isYowWon: boolean) => void,
     setBoard: (newBoard: BoardType) => void,
     updateTile: (newTile: TileEntity, index: [number, number]) => void
     resetState: () => void 
@@ -19,6 +20,7 @@ type IAppStoreStates = {
     isFinished: boolean, 
     isYouLose: boolean,
     isLoading: boolean 
+    isYowWon: boolean 
 }
 type IAppStore = IAppStoreReducers & IAppStoreStates & {}
 
@@ -27,6 +29,7 @@ const defaultState = (): IAppStoreStates => ({
   isLoading: false,
   isFinished: false,
   isYouLose: false,
+  isYowWon: false
 })
 
 const useAppStore = create<IAppStore>()(
@@ -36,6 +39,7 @@ const useAppStore = create<IAppStore>()(
         ...defaultState(),
 
         setYouLose: (isYouLose: boolean) => set(() => ({ isYouLose })),
+        setIsYouWon: (isYowWon: boolean) => set(() => ({ isYowWon })),
         setIsLoading: (isLoading: boolean) => set(() => ({ isLoading })),
         setBoard: (newBoard) => set(() => ({ board: newBoard })),
         resetState: () => set(() => ({ ...defaultState() })),

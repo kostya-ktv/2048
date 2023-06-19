@@ -4,7 +4,7 @@ import SBoard from "./Board.styled";
 import Tile from "./Tile/Tile";
 
 export const Board = () => {
-  const { isYouLose, board } = useAppStore();
+  const { isYouLose, isYowWon, board } = useAppStore();
 
   useKeyboardListener();
 
@@ -21,9 +21,9 @@ export const Board = () => {
           ))
         )
       ) : (
-        <div className="lose-screen">
+        <div className="res-screen">
           <span>You</span>
-          <span>lose...</span>
+          <span>{isYowWon ? "Won !!!" : "lose..."}</span>
         </div>
       )}
     </SBoard>
