@@ -3,14 +3,16 @@ import RefreshImage from "../../../assets/refresh.svg";
 import useAppStore from "../../../store/store";
 
 const SRefreshButton = styled.div`
+  position: absolute;
   height: 70px;
   width: 60px;
   padding: 5px 10px;
   border-radius: 15px 0 0 15px;
+  right: 10px;
   cursor: pointer;
   .refresh-icon {
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     transition: transform 0.1s ease;
     &:active {
       transform: scale(0.9);

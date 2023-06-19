@@ -33,13 +33,14 @@ const SArrow = styled.div`
   }
 `;
 
-interface IArrow {
+export interface IArrow {
   direction: "up" | "down" | "left" | "right";
+  onClick: Function;
 }
 
-const Arrow: React.FC<IArrow> = ({ direction }) => {
+const Arrow: React.FC<IArrow> = ({ direction, onClick }) => {
   return (
-    <SArrow className="arrow">
+    <SArrow className="arrow" onClick={() => onClick()}>
       <img src={arrowImg} className={direction} />
     </SArrow>
   );

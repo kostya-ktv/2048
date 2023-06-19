@@ -7,11 +7,16 @@ export const Board = () => {
   const { board } = useAppStore();
 
   useKeyboardListener();
+
   return (
     <SBoard>
-      {board.map((row, i) =>
+      {board.map((row: any[], i: number) =>
         row.map((tile, tileIndex) => (
-          <Tile tileNumber={tile as any} key={`${i}-${tileIndex}`} />
+          <Tile
+            tileIndex={[i, tileIndex]}
+            tile={tile}
+            key={`${i}-${tileIndex}`}
+          />
         ))
       )}
     </SBoard>

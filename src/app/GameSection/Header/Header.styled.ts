@@ -4,11 +4,12 @@ import { styled } from "styled-components";
 const SHeader = styled.div`
     height: 100px;
     width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
      background-color: rgb(0 0 0 / 15%);
-       border-radius: 15px;
+    border-radius: 15px;
     .game-name {
         font-size: 70px;
         color: white;

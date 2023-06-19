@@ -26,7 +26,7 @@ const STile = styled.div<Props>`
         animation-duration: 0.2s;
         animation-name: newTile;
         animation-fill-mode: forwards;
-        animation-delay: 0.25s;
+        animation-delay: 0.45s;
         transform: scale(0);
         @keyframes newTile {
             from {
